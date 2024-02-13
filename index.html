@@ -18,21 +18,26 @@
         <meta property="og:description" content="Veja a batalha épica entre emojis!!!">
         <meta property="og:image" content="https://th.bing.com/th/id/OIG4.xASed2vCiSJrjEXxTOQw?pid=ImgGn">
         <meta property="og:url" content="https://neoandrevictor.github.io/jankenpon.github.io/">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-touch-icon" href="https://th.bing.com/th/id/OIG4.xASed2vCiSJrjEXxTOQw?pid=ImgGn">
+
+            <link rel="icon" type="image/png" href="https://th.bing.com/th/id/OIG1.YPiPMp41owFf5a4.MAO2?pid=ImgGn">
+
     </head>
 
     <body>
         <div id="campo"></div>
         <!-- Inicio codigo Contador -->
         <img style="display: none;" src="https://contador-gratis.com/contadores-de-visitas/130224112904363.gif">
-           
-      
-        <img style="display: none;" src="https://geoloc5.geovisite.ovh/private/geocounter.php?compte=t7jc9ngwepq2&base=geoloc5" border="0" alt="jogos de mapas">
+        <img style="display: none;" src="https://geoloc5.geovisite.ovh/private/geocounter.php?compte=t7jc9ngwepq2&base=geoloc5" >
         <script>
             let diasDiferentes = contarDiasDiferentes();
             
             class Elemento {
                 constructor() {
-                    this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡'];
+                    this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡','💧'];
                     this.opcoes = [];
 
                     for (let k = 0; k < diasDiferentes + 2 && k < this.matriz.length; k++) {
@@ -144,7 +149,11 @@
                                     (elemento.textContent == "🔥" && temp == "✂️") ||
                                     (elemento.textContent == "⚡" && temp == "✂️") ||
                                     (elemento.textContent == "🔥" && temp == "⚡") ||
-                                    (elemento.textContent == "🪨" && temp == "⚡") 
+                                    (elemento.textContent == "🪨" && temp == "⚡") ||
+                                    (elemento.textContent == "💧" && temp == "✂️") ||
+                                    (elemento.textContent == "💧" && temp == "🪨") ||
+                                    (elemento.textContent == "💧" && temp == "📄") ||
+                                    (elemento.textContent == "⚡" && temp == "💧") 
                                 ) {
 
                                     this.span.textContent = elemento.textContent;
@@ -157,7 +166,9 @@
 
                                 
 
-                                if (elemento.textContent == "📄" && temp == "🔥") {
+                                if ((elemento.textContent == "📄" && temp == "🔥") ||
+                                    (elemento.textContent == "🔥" && temp == "💧")
+                                    ) {
                                     elemento.remove();
                                     if (elementos.length == 1) {
                                         newGame();
@@ -222,7 +233,7 @@
                 }
             }
 
-            setTimeout(verificaSozinho, 10 * 1000);
+            setInterval(verificaSozinho, 10 * 1000);
             function registrarVisita() {
                 // Obtenha a data atual
                 const dataAtual = new Date();
