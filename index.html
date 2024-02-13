@@ -55,7 +55,7 @@
             
             class Elemento {
                 constructor() {
-                    this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡','💧','🌿'];
+                    this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡','💧','🌿','🪽'];
                     this.opcoes = [];
 
                     for (let k = 0; k < diasDiferentes + 2 && k < this.matriz.length; k++) {
@@ -175,8 +175,16 @@
                                     (elemento.textContent == "✂️" && temp == "🌿") ||
                                     (elemento.textContent == "🌿" && temp == "🪨") ||
                                     (elemento.textContent == "🌿" && temp == "💧") ||
+                                    (elemento.textContent == "🌿" && temp == "📄") ||
                                     (elemento.textContent == "⚡" && temp == "🌿") ||
-                                    (elemento.textContent == "🔥" && temp == "🌿") 
+                                    (elemento.textContent == "🔥" && temp == "🌿") ||
+                                    (elemento.textContent == "✂️" && temp == "🪽") ||
+                                    (elemento.textContent == "🪽" && temp == "🌿") ||
+                                    (elemento.textContent == "🪽" && temp == "💧") ||
+                                    (elemento.textContent == "🪽" && temp == "📄") ||
+                                    (elemento.textContent == "🪨" && temp == "🪽") ||
+                                    (elemento.textContent == "🔥" && temp == "🪽") ||
+                                    (elemento.textContent == "⚡" && temp == "🪽") 
                                 ) {
 
                                     this.span.textContent = elemento.textContent;
