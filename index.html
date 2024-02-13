@@ -23,7 +23,10 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-touch-icon" href="https://th.bing.com/th/id/OIG4.xASed2vCiSJrjEXxTOQw?pid=ImgGn">
 
-            <link rel="icon" type="image/png" href="https://th.bing.com/th/id/OIG1.YPiPMp41owFf5a4.MAO2?pid=ImgGn">
+        <link rel="icon" type="image/png" href="https://th.bing.com/th/id/OIG1.YPiPMp41owFf5a4.MAO2?pid=ImgGn">
+
+        <link rel="manifest" href="/manifest.json">
+
 
     </head>
 
@@ -37,7 +40,7 @@
             
             class Elemento {
                 constructor() {
-                    this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡','💧'];
+                    this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡','💧','🌿'];
                     this.opcoes = [];
 
                     for (let k = 0; k < diasDiferentes + 2 && k < this.matriz.length; k++) {
@@ -153,7 +156,12 @@
                                     (elemento.textContent == "💧" && temp == "✂️") ||
                                     (elemento.textContent == "💧" && temp == "🪨") ||
                                     (elemento.textContent == "💧" && temp == "📄") ||
-                                    (elemento.textContent == "⚡" && temp == "💧") 
+                                    (elemento.textContent == "⚡" && temp == "💧") ||
+                                    (elemento.textContent == "✂️" && temp == "🌿") ||
+                                    (elemento.textContent == "🌿" && temp == "🪨") ||
+                                    (elemento.textContent == "🌿" && temp == "💧") ||
+                                    (elemento.textContent == "⚡" && temp == "🌿") ||
+                                    (elemento.textContent == "🔥" && temp == "🌿") 
                                 ) {
 
                                     this.span.textContent = elemento.textContent;

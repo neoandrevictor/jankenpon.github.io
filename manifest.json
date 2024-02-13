@@ -1,0 +1,13 @@
+{
+    "name": "Jankenpon",
+    "short_name": "Jankenpon",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "https://th.bing.com/th/id/OIG4.xASed2vCiSJrjEXxTOQw?pid=ImgGn",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
