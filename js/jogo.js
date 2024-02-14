@@ -10,7 +10,7 @@ class Elemento {
         }
 
         //this.opcoes = this.matriz;
-        this.opcoes = ['🪨', '📄', '✂️', '🔥'];
+        //this.opcoes = ['🪨', '📄', '✂️', '🔥'];
 
         this.campo = document.getElementById('campo');
         this.span = null;
