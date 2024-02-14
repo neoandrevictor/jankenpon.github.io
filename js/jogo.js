@@ -8,9 +8,11 @@ class Elemento {
         for (let k = 0; k < diasDiferentes + 2 && k < this.matriz.length; k++) {
             this.opcoes.push(this.matriz[k]);
         }
+        if (window.location.href != "https://neoandrevictor.github.io/jankenpon.github.io/") {
 
-        //this.opcoes = this.matriz;
-        //this.opcoes = ['🪨', '📄', '✂️', '🔥'];
+            this.opcoes = this.matriz;
+        }
+
 
         this.campo = document.getElementById('campo');
         this.span = null;
@@ -149,19 +151,36 @@ class Elemento {
                     if (tocarSom) {
                         let som;
                         if (elemento.textContent == "🪨") {
-                            som = 'sound_stone'
+                            som = 'sound_stone';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
                         }
                         if (elemento.textContent == "📄") {
-                            som = 'sound_paper'
+                            som = 'sound_paper';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
                         }
                         if (elemento.textContent == "🔥") {
-                            som = 'sound_fire'
+                            som = 'sound_fire';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
                         }
                         if (elemento.textContent == "✂️") {
-                            som = 'sound_scissors'
+                            som = 'sound_scissors';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
                         }
-                        let somColisao = document.getElementById(som);
-                        somColisao.play()
+                        if (elemento.textContent == "💧") {
+                            som = 'sound_water';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
+                        }
+                        if (elemento.textContent == "⚡") {
+                            som = 'sound_thunder';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play()
+                        }
+
                     }
 
 
@@ -173,7 +192,14 @@ class Elemento {
                         let som;
 
                         if (temp == "🔥") {
-                            som = 'sound_fire'
+                            som = 'sound_fire';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
+                        }
+                        if (elemento.textContent == "💧") {
+                            som = 'sound_water';
+                            let somColisao = document.getElementById(som);
+                            somColisao.play();
                         }
 
                         let somColisao = document.getElementById(som);

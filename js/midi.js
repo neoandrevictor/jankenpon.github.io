@@ -1,4 +1,6 @@
-let musicaSelecionada = 'stone.mid';
+let musicas = ['stone.mid', 'paper.mid'];
+let musicaSelecionada = musicas[Math.floor(Math.random() * musicas.length)];
+
 
 function playMidi(fileName) {
     let urlSite = window.location.href;
