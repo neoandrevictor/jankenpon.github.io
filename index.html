@@ -22,7 +22,7 @@
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    navigator.serviceWorker.register('https://neoandrevictor.github.io/jankenpon.github.io/sw.js').then(function (registration) {
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
                     }, function (err) {
                         console.log('ServiceWorker registration failed: ', err);
@@ -41,6 +41,14 @@
     </head>
 
     <body>
+        <audio id="sound_stone" src="sound/rock.mp3"></audio>
+        <audio id="sound_fire" src="sound/fire.mp3"></audio>
+        <audio id="sound_paper" src="sound/paper.mp3"></audio>
+        <audio id="sound_scissors" src="sound/scissors.mp3"></audio>
+
+
+
+
         <div id="campo"></div>
         <span id="toggleButton" onclick=" togglePlay()">🔇</span>
 

@@ -10,6 +10,7 @@ class Elemento {
         }
 
         //this.opcoes = this.matriz;
+        this.opcoes = ['🪨', '📄', '✂️', '🔥'];
 
         this.campo = document.getElementById('campo');
         this.span = null;
@@ -106,6 +107,7 @@ class Elemento {
                     rect1.y < rect2.y + rect2.height &&
                     rect1.y + rect1.height > rect2.y) {
                     // Colisão detectada, troca os ícones
+                    let tocarSom = false;
                     const temp = this.span.textContent;
                     if ((elemento.textContent == "🪨" && temp == "✂️") ||
                         (elemento.textContent == "✂️" && temp == "📄") ||
@@ -135,18 +137,47 @@ class Elemento {
                     ) {
 
                         this.span.textContent = elemento.textContent;
+                        tocarSom = true;
                     }
 
                     if ((elemento.textContent == "⚡" && temp == "📄")) {
 
                         this.span.textContent = "🔥";
+                        tocarSom = true;
                     }
 
+                    if (tocarSom) {
+                        let som;
+                        if (elemento.textContent == "🪨") {
+                            som = 'sound_stone'
+                        }
+                        if (elemento.textContent == "📄") {
+                            som = 'sound_paper'
+                        }
+                        if (elemento.textContent == "🔥") {
+                            som = 'sound_fire'
+                        }
+                        if (elemento.textContent == "✂️") {
+                            som = 'sound_scissors'
+                        }
+                        let somColisao = document.getElementById(som);
+                        somColisao.play()
+                    }
 
 
                     if ((elemento.textContent == "📄" && temp == "🔥") ||
                         (elemento.textContent == "🔥" && temp == "💧")
                     ) {
+
+
+                        let som;
+
+                        if (temp == "🔥") {
+                            som = 'sound_fire'
+                        }
+
+                        let somColisao = document.getElementById(som);
+                        somColisao.play()
                         elemento.remove();
                         if (elementos.length == 1) {
                             newGame();
@@ -174,6 +205,8 @@ class Elemento {
 
 
                     }
+
+
 
 
                 }
