@@ -9,7 +9,7 @@ class Elemento {
             this.opcoes.push(this.matriz[k]);
         }
 
-        this.opcoes = this.matriz;
+        //this.opcoes = this.matriz;
 
         this.campo = document.getElementById('campo');
         this.span = null;
