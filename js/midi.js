@@ -1,7 +1,16 @@
 let musicaSelecionada = 'stone.mid';
 
 function playMidi(fileName) {
-    var url = '/music/' + fileName; // Concatenando o caminho da pasta music com o nome do arquivo
+    let urlSite = window.location.href;
+
+    if (urlSite == "https://neoandrevictor.github.io/jankenpon.github.io/") {
+
+        var url = '/music/' + fileName; // Concatenando o caminho da pasta music com o nome do arquivo
+    } else {
+        var url = 'https://neoandrevictor.github.io/jankenpon.github.io/music/' + fileName; // Concatenando o caminho da pasta music com o nome do arquivo
+
+    }
+
     fetch(url)
         .then(response => response.arrayBuffer())
         .then(arrayBuffer => {
