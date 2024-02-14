@@ -202,8 +202,7 @@ class Elemento {
                             somColisao.play();
                         }
 
-                        let somColisao = document.getElementById(som);
-                        somColisao.play()
+
                         elemento.remove();
                         if (elementos.length == 1) {
                             newGame();

@@ -1,4 +1,4 @@
-let musicas = ['stone.mid', 'paper.mid'];
+let musicas = ['stone.mid'];
 let musicaSelecionada = musicas[Math.floor(Math.random() * musicas.length)];
 
 
