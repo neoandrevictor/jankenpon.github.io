@@ -5,9 +5,9 @@ function playMidi(fileName) {
 
     if (urlSite == "https://neoandrevictor.github.io/jankenpon.github.io/") {
 
-        var url = '/music/' + fileName; // Concatenando o caminho da pasta music com o nome do arquivo
-    } else {
         var url = 'https://neoandrevictor.github.io/jankenpon.github.io/music/' + fileName; // Concatenando o caminho da pasta music com o nome do arquivo
+    } else {
+        var url = '/music/' + fileName; // Concatenando o caminho da pasta music com o nome do arquivo
 
     }
 
