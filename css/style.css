@@ -1,0 +1,23 @@
+body {
+    background-color: black;
+}
+
+.elemento {
+    position: absolute;
+}
+
+#toggleButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#toggleButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
