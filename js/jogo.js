@@ -1,9 +1,63 @@
 let diasDiferentes = contarDiasDiferentes();
 
+
+let elementoSelecionado = "";
+let timeoutMovimento = "";
+let emojiPlayer = "";
+
+document.addEventListener('click', (event) => {
+    if (elementoSelecionado != "") {
+        moverPeloCampo(event.clientX, event.clientY);
+    }
+});
+
+function moverPeloCampo(x, y) {
+
+    let startX = elementoSelecionado.offsetLeft;
+    let startY = elementoSelecionado.offsetTop;
+
+    targetX = x;
+    targetY = y;
+    if (timeoutMovimento != '') {
+        clearTimeout(timeoutMovimento);
+    }
+    const step = 1; // Define o número de pixels a serem movidos em cada passo
+    const duration = 500; // Define a duração total da animação em milissegundos
+    const steps = duration / step; // Calcula o número total de passos
+
+    let stepCount = 0;
+
+    const moveStep = () => {
+
+        const progress = stepCount / steps;
+        const currentX = startX + (targetX - startX) * progress;
+        const currentY = startY + (targetY - startY) * progress;
+        elementoSelecionado.style.left = currentX + 'px';
+        elementoSelecionado.style.top = currentY + 'px';
+
+        // Verifica se houve colisão com outros elementos
+        for (k = 0; k < elementosLista.length; k++) {
+            elementosLista[k].verificarColisao();
+        }
+
+
+        stepCount++;
+        if (stepCount < steps) {
+            timeoutMovimento = setTimeout(moveStep, step); // Chama a próxima etapa após o intervalo de tempo definido
+        } else {
+
+        }
+    };
+
+    moveStep();
+}
+
+
 class Elemento {
-    constructor() {
+    constructor(isPlayer) {
         this.matriz = ['🪨', '📄', '✂️', '🔥', '⚡', '💧', '🌿', '🪽'];
         this.opcoes = [];
+        this.isPlayer = isPlayer;
 
         for (let k = 0; k < diasDiferentes + 2 && k < this.matriz.length; k++) {
             this.opcoes.push(this.matriz[k]);
@@ -14,22 +68,48 @@ class Elemento {
         }
 
 
+        this.caractereAleatorio = this.opcoes[Math.floor(Math.random() * this.opcoes.length)];
+
+        if (this.caractereAleatorio == emojiPlayer && false) {
+            this.isPlayer = true;
+        }
         this.campo = document.getElementById('campo');
+
+
         this.span = null;
         this.criarSpan();
-        this.mover();
+        if (!this.isPlayer) {
+
+            this.mover();
+        }
+
     }
 
     criarSpan() {
         this.span = document.createElement('span');
         this.span.className = 'elemento';
-        const caractereAleatorio = this.opcoes[Math.floor(Math.random() * this.opcoes.length)];
-        this.span.textContent = caractereAleatorio;
+        this.span.textContent = this.caractereAleatorio;
+
+        if (this.isPlayer) {
+            this.span.style.transform = 'rotate(359deg) scaleY(-1)';
+            this.span.style.cursor = 'pointer';
+            emojiPlayer = this.caractereAleatorio;
+        }
 
         // Posicionando inicialmente dentro da área visível da tela
         this.posicionarSpan();
+        if (this.isPlayer) {
+            this.span.onclick = this.selecionaElemento;
+        }
 
         this.campo.appendChild(this.span);
+    }
+
+    selecionaElemento() {
+        if (elementoSelecionado != this) {
+
+            elementoSelecionado = this;
+        }
     }
 
     posicionarSpan() {
@@ -39,11 +119,15 @@ class Elemento {
         this.span.style.top = offsetY + 'px';
     }
 
-    mover() {
-        const targetX = Math.random() * (window.innerWidth - 50);
-        const targetY = Math.random() * (window.innerHeight - 20);
-        const startX = this.span.offsetLeft;
-        const startY = this.span.offsetTop;
+    mover(x, y) {
+        let targetX = Math.random() * (window.innerWidth - 50);
+        let targetY = Math.random() * (window.innerHeight - 20);
+        let startX = this.span.offsetLeft;
+        let startY = this.span.offsetTop;
+        if (this.isPlayer && x != undefined && y != undefined) {
+            targetX = x;
+            targetY = y;
+        }
         const step = 1; // Define o número de pixels a serem movidos em cada passo
         const duration = 500; // Define a duração total da animação em milissegundos
         const steps = duration / step; // Calcula o número total de passos
@@ -64,7 +148,9 @@ class Elemento {
             if (stepCount < steps) {
                 setTimeout(moveStep, step); // Chama a próxima etapa após o intervalo de tempo definido
             } else {
-                this.mover(); // Reinicia o movimento
+                if (!this.isPlayer) {
+                    this.mover();
+                }// Reinicia o movimento
             }
         };
 
@@ -244,7 +330,8 @@ let elementosLista;
 function newGame() {
 
     elementosLista = [];
-    for (let k = 0; k < nivel; k++) {
+    elementosLista.push(new Elemento(true));
+    for (let k = 1; k < nivel; k++) {
         elementosLista.push(new Elemento());
     }
 }
